@@ -24,8 +24,8 @@ class PlainModelViewerWidget(QtGui.QWidget):
     def _setupZinc(self):
         self._zinc = self._ui.widgetZinc
         self._zinc.setContext(self._context)
-        self._zinc.defineStandardMaterials()
-        self._zinc.defineStangardGlyphs()
+        self._defineStandardMaterials()
+        self._defineStandardGlyphs()
 
     def _makeConnections(self):
         self._ui.pushButtonDone.clicked.connect(self._doneButtonClicked)
@@ -39,6 +39,20 @@ class PlainModelViewerWidget(QtGui.QWidget):
     def setModelData(self, model_data):
         self._model_data = model_data
         self._visualise()
+
+    def _defineStandardGlyphs(self):
+        '''
+        Helper method to define the standard glyphs
+        '''
+        glyph_module = self._context.getGlyphmodule()
+        glyph_module.defineStandardGlyphs()
+
+    def _defineStandardMaterials(self):
+        '''
+        Helper method to define the standard materials.
+        '''
+        material_module = self._context.getMaterialmodule()
+        material_module.defineStandardMaterials()
 
     def _visualise(self):
         ''' Read model data
