@@ -1,4 +1,3 @@
-
 '''
 MAP Client Plugin Step
 '''
@@ -8,6 +7,7 @@ from mapclient.mountpoints.workflowstep import WorkflowStepMountPoint
 from mapclientplugins.plainmodelviewerstep.configuredialog import ConfigureDialog
 from mapclientplugins.plainmodelviewerstep.view.plainmodelviewerwidget import PlainModelViewerWidget
 
+
 class PlainModelViewerStep(WorkflowStepMountPoint):
     '''
     Skeleton step which is intended to be a helpful starting point
@@ -16,7 +16,7 @@ class PlainModelViewerStep(WorkflowStepMountPoint):
 
     def __init__(self, location):
         super(PlainModelViewerStep, self).__init__('Plain Model Viewer', location)
-        self._configured = False # A step cannot be executed until it has been configured.
+        self._configured = False  # A step cannot be executed until it has been configured.
         self._category = 'Zinc'
         # Add any other initialisation code here:
         # Ports:
@@ -24,13 +24,12 @@ class PlainModelViewerStep(WorkflowStepMountPoint):
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#uses',
                       'http://physiomeproject.org/workflow/1.0/rdf-schema#zincmodeldata'))
         # Port data:
-        self._portData0 = None # schema#zincmodeldata
+        self._portData0 = None  # schema#zincmodeldata
         # Config:
         self._config = {}
         self._config['identifier'] = ''
         # View:
         self._view = None
-
 
     def execute(self):
         '''
@@ -52,7 +51,7 @@ class PlainModelViewerStep(WorkflowStepMountPoint):
         The index is the index of the port in the port list.  If there is only one
         uses port for this step then the index can be ignored.
         '''
-        self._portData0 = dataIn # schema#zincmodeldata
+        self._portData0 = dataIn  # schema#zincmodeldata
 
     def configure(self):
         '''
@@ -67,10 +66,10 @@ class PlainModelViewerStep(WorkflowStepMountPoint):
         dlg.setConfig(self._config)
         dlg.validate()
         dlg.setModal(True)
-        
+
         if dlg.exec_():
             self._config = dlg.getConfig()
-        
+
         self._configured = dlg.validate()
         self._configuredObserver()
 
@@ -93,7 +92,6 @@ class PlainModelViewerStep(WorkflowStepMountPoint):
         '''
         return json.dumps(self._config, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
-
     def deserialize(self, string):
         '''
         Add code to deserialize this step from string.  This method should
@@ -105,5 +103,3 @@ class PlainModelViewerStep(WorkflowStepMountPoint):
         d.identifierOccursCount = self._identifierOccursCount
         d.setConfig(self._config)
         self._configured = d.validate()
-
-

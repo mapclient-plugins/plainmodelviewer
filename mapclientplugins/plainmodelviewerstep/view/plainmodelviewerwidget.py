@@ -6,6 +6,7 @@ from opencmiss.zinc.context import Context
 
 from mapclientplugins.plainmodelviewerstep.view.ui_plainmodelviewerwidget import Ui_PlainModelViewerWidget
 
+
 class PlainModelViewerWidget(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
@@ -57,6 +58,3 @@ class PlainModelViewerWidget(QtWidgets.QWidget):
     def _visualise(self):
         ''' Read model data
         '''
-
-
-
