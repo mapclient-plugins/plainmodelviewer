@@ -1,12 +1,13 @@
 __author__ = 'hsor001'
 
-from PySide import QtGui
+from PySide2 import QtWidgets
 
 from opencmiss.zinc.context import Context
 
 from mapclientplugins.plainmodelviewerstep.view.ui_plainmodelviewerwidget import Ui_PlainModelViewerWidget
 
-class PlainModelViewerWidget(QtGui.QWidget):
+
+class PlainModelViewerWidget(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         super(PlainModelViewerWidget, self).__init__(parent)
@@ -57,6 +58,3 @@ class PlainModelViewerWidget(QtGui.QWidget):
     def _visualise(self):
         ''' Read model data
         '''
-
-
-
