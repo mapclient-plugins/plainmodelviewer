@@ -1,6 +1,6 @@
 __author__ = 'hsor001'
 
-from PySide2 import QtWidgets
+from PySide6 import QtWidgets
 
 from opencmiss.zinc.context import Context
 
