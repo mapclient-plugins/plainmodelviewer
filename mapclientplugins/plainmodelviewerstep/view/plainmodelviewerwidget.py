@@ -2,7 +2,7 @@ __author__ = 'hsor001'
 
 from PySide6 import QtWidgets
 
-from opencmiss.zinc.context import Context
+from cmlibs.zinc.context import Context
 
 from mapclientplugins.plainmodelviewerstep.view.ui_plainmodelviewerwidget import Ui_PlainModelViewerWidget
 
