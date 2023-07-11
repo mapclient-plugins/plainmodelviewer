@@ -15,46 +15,47 @@ class PlainModelViewerWidget(QtWidgets.QWidget):
         self._ui.setupUi(self)
 
         self._context = Context('view')
-        self._setupZinc()
+        self._setup_zinc()
 
         self._callback = None
         self._model_data = None
 
-        self._makeConnections()
+        self._make_connections()
 
-    def _setupZinc(self):
+    def _setup_zinc(self):
         self._zinc = self._ui.widgetZinc
         self._zinc.setContext(self._context)
-        self._defineStandardMaterials()
-        self._defineStandardGlyphs()
+        self._define_standard_materials()
+        self._define_standard_glyphs()
 
-    def _makeConnections(self):
-        self._ui.pushButtonDone.clicked.connect(self._doneButtonClicked)
+    def _make_connections(self):
+        self._ui.pushButtonDone.clicked.connect(self._done_button_clicked)
 
-    def _doneButtonClicked(self):
+    def _done_button_clicked(self):
         self._callback()
 
-    def registerDoneExecution(self, callback):
+    def register_done_execution(self, callback):
         self._callback = callback
 
-    def setModelData(self, model_data):
+    def set_model_data(self, model_data):
         self._model_data = model_data
         self._visualise()
 
-    def _defineStandardGlyphs(self):
-        '''
+    def _define_standard_glyphs(self):
+        """
         Helper method to define the standard glyphs
-        '''
+        """
         glyph_module = self._context.getGlyphmodule()
         glyph_module.defineStandardGlyphs()
 
-    def _defineStandardMaterials(self):
-        '''
+    def _define_standard_materials(self):
+        """
         Helper method to define the standard materials.
-        '''
+        """
         material_module = self._context.getMaterialmodule()
         material_module.defineStandardMaterials()
 
     def _visualise(self):
-        ''' Read model data
-        '''
+        """
+        Read model data
+        """
